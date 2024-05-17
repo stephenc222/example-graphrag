@@ -73,49 +73,20 @@ What are the main themes in these documents?
 
 Example Graph RAG output:
 
-```txt
-The main themes in documents summarizing environmental policies, practices, and challenges can be broadly categorized as follows:
+````txt
+The main themes in the provided documents include:
 
-1. **Climate Change and Emissions**:
-   - **Mitigation and Adaptation**: Strategies to reduce greenhouse gas emissions and adapt to changing climate conditions.
-   - **Carbon Pricing Mechanisms**: Use of economic tools like carbon taxes and cap-and-trade to manage emissions.
-   - **Scientific Research and Monitoring**: Data collection and studies on climate impacts and mitigation efficacy.
-   - **Resilience and Adaptation**: Building capacity to withstand and recover from climatic impacts.
+1. **Environmental Policies**: Emphasis on how these policies aim to protect natural ecosystems, promote sustainability, and address environmental challenges.
+2. **Sustainability Practices**: Focus on maintaining ecological balance and health.
+3. **Environmental Challenges**: Addressing issues like pollution, climate change, deforestation, and their broader impacts on wildlife, human health, and the economy.
+4. **Governmental Responsibility**: The role of governments and international organizations in enforcing and implementing environmental policies.
+5. **Stakeholder Cooperation**: The critical role of various stakeholders, including local authorities and communities, in upholding and promoting environmental policies.
+6. **Adaptation and Mitigation Strategies**: Strategies for mitigating the effects of climate change, including renewable energy adoption, efficient water use, and sustainable agriculture.
+7. **Interconnectedness of Environmental Issues**: Exploring how different environmental issues are interconnected, such as deforestation leading to pollution and climate change.
+8. **Impact on Specific Sectors**: Effects on sectors like agriculture (e.g., reduced yields, food security) and their relationships to environmental factors.
 
-2. **Biodiversity and Conservation**:
-   - **Conservation Policies**: Measures to protect wildlife, habitats, and natural ecosystems.
-   - **Biodiversity Loss**: Addressing the decline in species variety and ecosystem services.
-   - **Protected Areas**: Strategies and legal frameworks for conserving biodiversity.
-
-3. **Sustainable Development and Resource Management**:
-   - **Natural Resources**: Management and sustainable use of water, soil, and forests.
-   - **Land Use and Urban Planning**: Policies for sustainable land use and urban development.
-   - **Agriculture**: Issues related to crop yields, irrigation, and the impact of climate change on food production.
-   - **Water Management**: Efficient usage, distribution, and conservation of water resources.
-
-4. **Energy and Renewable Resources**:
-   - **Renewable Energy**: Transition to solar, wind, hydro, and other renewable sources.
-   - **Energy Efficiency**: Improving efficiency in energy use and production.
-   - **Technological Innovations**: Advances in energy storage, grid integration, and renewable energy technologies.
-
-5. **Pollution and Environmental Impact**:
-   - **Air and Water Quality**: Measures to control air and water pollution and improve environmental health.
-   - **Waste Management**: Strategies for reducing waste, recycling, and sustainable disposal practices.
-
-6. **Health and Human Impact**:
-   - **Public Health**: Effects of environmental changes on human health, such as air quality and extreme heat.
-   - **Social and Economic Dimensions**: Balancing economic growth with environmental and social sustainability.
-
-7. **Policy and Legislation**:
-   - **Environmental Regulations**: Legal frameworks to enforce environmental protection.
-   - **International Agreements**: Collaborative efforts to address global environmental issues.
-   - **Funding and Economic Policies**: Financial mechanisms to support environmental initiatives.
-
-8. **Community and Stakeholder Involvement**:
-   - **Public Awareness and Education**: Educating the public and stakeholders on environmental issues and sustainable practices.
-   - **Local Communities**: Role of local governance and community engagement in environmental conservation.
-
-These themes provide a comprehensive understanding of the various dimensions involved in addressing environmental challenges and advancing sustainability.
+These themes reflect a comprehensive approach to understanding and addressing complex environmental issues through policy, cooperation, and sustainable practices.
 ```
 
 _Note that the example uses a multiple albeit small documents for simplicity. In a real-world scenario, you would need to process multiple large documents and answer multiple queries. Expect the script to run for several minutes and cost around $3-5 in OpenAI credits using the GPT-4o model for all of the NLP tasks._
+````

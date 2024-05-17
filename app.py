@@ -25,7 +25,7 @@ def split_documents_into_chunks(documents, chunk_size=600, overlap_size=100):
 def extract_elements_from_chunks(chunks):
     elements = []
     for index, chunk in enumerate(chunks):
-        print(f"Chunk index {index + 1} of {len(chunks)}:")
+        print(f"Chunk index {index} of {len(chunks)}:")
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
@@ -43,7 +43,7 @@ def extract_elements_from_chunks(chunks):
 def summarize_elements(elements):
     summaries = []
     for index, element in enumerate(elements):
-        print(f"Element index {index + 1} of {len(elements)}:")
+        print(f"Element index {index} of {len(elements)}:")
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
@@ -61,7 +61,7 @@ def summarize_elements(elements):
 def build_graph_from_summaries(summaries):
     G = nx.Graph()
     for index, summary in enumerate(summaries):
-        print(f"Summary index {index + 1} of {len(summaries)}:")
+        print(f"Summary index {index} of {len(summaries)}:")
         lines = summary.split("\n")
         entities_section = False
         relationships_section = False
@@ -114,12 +114,29 @@ def detect_communities(graph):
     return communities
 
 
-def summarize_communities(communities):
+def summarize_communities(communities, graph):
     community_summaries = []
     for index, community in enumerate(communities):
-        print(f"Summarize Community index {index + 1} of {len(communities)}:")
-        community_summary = " ".join(community)
-        community_summaries.append(community_summary)
+        print(f"Summarize Community index {index} of {len(communities)}:")
+        subgraph = graph.subgraph(community)
+        nodes = list(subgraph.nodes)
+        edges = list(subgraph.edges(data=True))
+        description = "Entities: " + ", ".join(nodes) + "\nRelationships: "
+        relationships = []
+        for edge in edges:
+            relationships.append(
+                f"{edge[0]} -> {edge[2]['label']} -> {edge[1]}")
+        description += ", ".join(relationships)
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "Summarize the following community of entities and relationships."},
+                {"role": "user", "content": description}
+            ]
+        )
+        summary = response.choices[0].message.content.strip()
+        community_summaries.append(summary)
     return community_summaries
 
 
@@ -127,7 +144,7 @@ def summarize_communities(communities):
 def generate_answers_from_communities(community_summaries, query):
     intermediate_answers = []
     for index, summary in enumerate(community_summaries):
-        print(f"Summary index {index + 1} of {len(community_summaries)}:")
+        print(f"Summary index {index} of {len(community_summaries)}:")
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
@@ -170,7 +187,7 @@ def graph_rag_pipeline(documents, query, chunk_size=600, overlap_size=100):
 
     print("communities:", communities[0])
     # Step 5: Summarize communities
-    community_summaries = summarize_communities(communities)
+    community_summaries = summarize_communities(communities, graph)
 
     # Step 6: Generate answers from community summaries
     final_answer = generate_answers_from_communities(
